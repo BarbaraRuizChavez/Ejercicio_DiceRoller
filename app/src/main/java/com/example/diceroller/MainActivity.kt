@@ -7,12 +7,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -73,33 +71,31 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            modifier = modifier,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
                 painter = painterResource(firstDiceImage),
                 contentDescription = "Dado 1"
             )
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             Image(
                 painter = painterResource(secondDiceImage),
                 contentDescription = "Dado 2"
             )
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(
-            onClick = {
-                firstDiceImage = getRandomDiceImage()
-                secondDiceImage = getRandomDiceImage()
-                Log.i("XXXMainActivity", "Dados lanzados")
+            Spacer(modifier = Modifier.height(24.dp))
+            Button(
+                onClick = {
+                    firstDiceImage = getRandomDiceImage()
+                    secondDiceImage = getRandomDiceImage()
+                    Log.i("XXXMainActivity", "Dados lanzados de forma independiente")
+                }
+            ) {
+                Text(text = stringResource(R.string.roll))
             }
-        ) {
-            Text(text = stringResource(R.string.roll))
         }
     }
-
 }
 
 @Preview(showBackground = true)
