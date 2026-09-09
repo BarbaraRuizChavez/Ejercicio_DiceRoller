@@ -64,8 +64,8 @@ fun DiceRollerApp(modifier: Modifier = Modifier) {
 
 @Composable
 fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
-    var firstDiceImage by remember { mutableIntStateOf(getRandomDiceImage()) }
-    var secondDiceImage by remember { mutableIntStateOf(getRandomDiceImage()) }
+    var unoDiceImage by remember { mutableIntStateOf(getRandomDiceImage()) }
+    var dosDiceImage by remember { mutableIntStateOf(getRandomDiceImage()) }
 
     Column(
         modifier = modifier,
@@ -76,19 +76,19 @@ fun DiceWithButtonAndImage(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(firstDiceImage),
+                painter = painterResource(unoDiceImage),
                 contentDescription = "Dado 1"
             )
             Spacer(modifier = Modifier.height(16.dp))
             Image(
-                painter = painterResource(secondDiceImage),
+                painter = painterResource(dosDiceImage),
                 contentDescription = "Dado 2"
             )
             Spacer(modifier = Modifier.height(24.dp))
             Button(
                 onClick = {
-                    firstDiceImage = getRandomDiceImage()
-                    secondDiceImage = getRandomDiceImage()
+                    unoDiceImage = getRandomDiceImage()
+                    dosDiceImage = getRandomDiceImage()
                     Log.i("XXXMainActivity", "Dados lanzados de forma independiente")
                 }
             ) {
